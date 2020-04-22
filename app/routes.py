@@ -43,8 +43,10 @@ def create_user():
 @app.route('/', methods=["GET", "POST"])
 def index():
     events = db.session.query(Event).order_by(Event.start.desc()).all()
-    if current_user:
+    try:
         user = current_user.email
+    except AttributeError as error:
+        user = ''
     return render_template('index.html', events=events, user=user)
 
 @app.route('/add_event', methods=['POST', 'GET'])
