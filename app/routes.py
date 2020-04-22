@@ -43,7 +43,8 @@ def create_user():
 @app.route('/', methods=["GET", "POST"])
 def index():
     events = db.session.query(Event).order_by(Event.start.desc()).all()
-    user = current_user.email
+    if current_user:
+        user = current_user.email
     return render_template('index.html', events=events, user=user)
 
 @app.route('/add_event', methods=['POST', 'GET'])
