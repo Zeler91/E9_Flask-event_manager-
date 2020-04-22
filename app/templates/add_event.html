@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New event</title>
+</head>
+<body>
+    <form method="POST" action="/add_event">
+    {{ form.csrf_token }}
+        <p>{{ form.start.label }} {{ form.start }}</div>
+        <p>{{ form.end.label }} {{ form.end }}</div>
+        <p>{{ form.title.label }} {{ form.title }}</div>
+        <p>{{ form.text.label }} {{ form.text }}</div>
+        <p><input type="submit" value="Add">
+        {{ form.submit }}
+    </form>
+</body>
+</html>

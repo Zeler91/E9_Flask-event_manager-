@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New user</title>
+</head>
+<body>
+    <h2>Sign up</h2>
+    <form method="POST">
+    {{ form.csrf_token }}
+        <p>{{ form.email.label }} {{ form.email }}</div>
+        <p>{{ form.password.label }} {{ form.password }}</div>
+        <p><input type="submit" value="Create"></p>
+        {{ form.submit }}
+    </form>
+</body>
+</html>
