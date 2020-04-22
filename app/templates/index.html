@@ -6,28 +6,34 @@
     <title>Event Manager</title>
 </head>
 <body>
-    <h2>Hello! You sign in as {{user}}. This is Event Manager.</h2>
-    <table border="1" style="padding: 2px;">
-        <tr>
-            <th>Author</th>
-            <th>Subject</th>
-            <th>Start of event</th>
-            <th>End of event</th>
-            <th>Description</th>
-        </tr>
-        {% for event in events %}
+    {% if user %}
+        <h2>Hello! You sign in as {{user}}. This is Event Manager.</h2>
+        <table border="1" style="padding: 2px;">
             <tr>
-                <td>{{ event.author }}</td>
-                <td>{{ event.title }}</td>
-                <td>{{ event.start }}</td>
-                <td>{{ event.end }}</td>
-                <td>{{ event.text }}</td>
-                {% if user == event.author %}
-                    <td><a href={{ url_for('event', _method='GET', event_id=event._id|int) }}> Edit </a></td>
-                {% endif %}
+                <th>Author</th>
+                <th>Subject</th>
+                <th>Start of event</th>
+                <th>End of event</th>
+                <th>Description</th>
             </tr>
-        {% endfor %}
-    </table>
-    <p><a href={{ url_for('add_event', _method='GET') }}> Add new event </a></p>   
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.author }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.end }}</td>
+                    <td>{{ event.text }}</td>
+                    {% if user == event.author %}
+                        <td><a href={{ url_for('event', _method='GET', event_id=event._id|int) }}> Edit </a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <p><a href={{ url_for('add_event', _method='GET') }}> Add new event </a></p>
+    {% else %}
+        <h2>Hello! There is no user. Go to <a href="/crete_user">this page</a>to sign up.</h2>
+    {% endif %}
+    
+       
 </body>
 </html>
