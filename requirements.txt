@@ -44,3 +44,4 @@ flask-login
 alembic
 flask-bcrypt
 gunicorn
+psycopg2
